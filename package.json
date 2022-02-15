@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "scripts": {
+    "watch":"nodemon server.js",
+    "start": "node server.js"
+  },
+  "name": "nodeserver",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omarvegaabreu/nodeserver.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/omarvegaabreu/nodeserver/issues"
+  },
+  "homepage": "https://github.com/omarvegaabreu/nodeserver#readme",
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
