@@ -1,51 +1,31 @@
-const express = require("express");
-const app = express();
-const port = 3000;
+const EXPRESS = require("express");
+const MESSAGES_CONTROLLERS = require("./controllers/messages.controllers");
+const USERS_CONTROLLERS = require("./controllers/users.controllers");
+const { contentType } = require("express/lib/response");
+const APP = EXPRESS();
+const PORT = 3000;
 
-const users = [
-  {
-    id: 0,
-    name: "Omar Vega",
-  },
-  {
-    id: 1,
-    name: "Alejandro Vega",
-  },
-  {
-    id: 2,
-    name: "Abigail Vega",
-  },
-  {
-    id: 3,
-    name: "Rosely Vega",
-  },
-];
-
-app.get("/users", (req, res) => {
-  res.json(users);
+APP.get("/users", (req, res, next) => {
+  const start = Date.now();
+  next();
+  const delta = Date.now();
+  console.log(
+    `request method ${req.method} request url ${req.url} Delta:${delta}`
+  );
 });
 
-app.get("/users/:id", (req, res) => {
-  const userID = Number(req.params.id);
-  const currentUser = users[userID];
+APP.use(EXPRESS.json());
 
-  if (currentUser) {
-    res.json(currentUser);
-  } else {
-    res.status(401).json({
-      message: "Not a user",
-    });
-  }
-});
+APP.post("/users", USERS_CONTROLLERS.postUser);
 
-app.get("/messages", (req, res) => {
-  res.send("Hi this is messages");
-});
+APP.get("/users", USERS_CONTROLLERS.getAllUsers);
 
-app.post("/messages", (req, send) => {
-  console.log("this is messages");
-});
+APP.get("/users/:id", USERS_CONTROLLERS.getSingleUser);
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+APP.get("/messages", MESSAGES_CONTROLLERS.getMessage);
+
+APP.post("/messages", MESSAGES_CONTROLLERS.postMessage);
+
+APP.listen(PORT, () => {
+  console.log(`APP listening on port ${PORT}`);
 });
