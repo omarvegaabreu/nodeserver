@@ -1,7 +1,4 @@
-const USERS_MODEL = require("../models/users.models");
-
-// function
-// }
+const usersModel = require("../models/users.models");
 
 function postUser(req, res) {
   console.log(req.body.name);
@@ -9,20 +6,20 @@ function postUser(req, res) {
     return res.status(400).json("Missing user name");
   }
   const newUser = {
-    id: USERS_MODEL.length,
+    id: usersModel.length,
     name: req.body.name,
   };
 
-  USERS_MODEL.push(newUser);
+  usersModel.push(newUser);
 }
 
 function getAllUsers(req, res) {
-  res.json(USERS_MODEL);
+  res.json(usersModel);
 }
 
 function getSingleUser(req, res) {
   const userID = Number(req.params.id);
-  const currentUser = USERS_MODEL[userID];
+  const currentUser = usersModel[userID];
 
   if (currentUser) {
     res.json(currentUser);

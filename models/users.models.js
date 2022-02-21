@@ -17,6 +17,4 @@ const USERS = [
   },
 ];
 
-module.exports = {
-  USERS,
-};
+module.exports = USERS;
