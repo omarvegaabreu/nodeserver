@@ -1,4 +1,5 @@
 const EXPRESS = require("express");
+const path = require("path");
 
 const usersRouter = require("./routes/users.router");
 const messagesRouter = require("./routes/messages.router");
@@ -12,6 +13,7 @@ APP.use((req, res, next) => {
   console.log(`${req.method}${req.baseUrl}${req.url} request time:${delta}ms`);
 });
 
+APP.use("/site", EXPRESS.static(path.join(__dirname, "public")));
 APP.use(EXPRESS.json());
 APP.use("/users", usersRouter);
 APP.use("/messages", messagesRouter);
