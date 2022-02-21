@@ -16,7 +16,7 @@ function postUser(req, res) {
   USERS_MODEL.push(newUser);
 }
 
-function getAllUSERS(req, res) {
+function getAllUsers(req, res) {
   res.json(USERS_MODEL);
 }
 
@@ -33,6 +33,6 @@ function getSingleUser(req, res) {
 
 module.exports = {
   postUser,
-  getAllUSERS,
+  getAllUsers,
   getSingleUser,
 };
