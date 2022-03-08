@@ -6,7 +6,7 @@ function getMessage(req, res) {
   );
 }
 
-function postMessage(req, send) {
+function postMessage(req, res) {
   console.log("this is messages");
 }
 
